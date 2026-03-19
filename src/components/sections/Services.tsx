@@ -80,7 +80,7 @@ export function Services() {
         {/* Right Column: CTA and Image preview */}
         <div className="w-full lg:w-2/5 flex flex-col items-start lg:pl-16 relative mt-16 lg:mt-0">
           <div className="w-full flex justify-start lg:justify-end mb-16 lg:mb-24">
-             <PulseButton>Get started</PulseButton>
+             <PulseButton href="/contact">Get started</PulseButton>
           </div>
 
           <div className="w-full mt-auto lg:sticky lg:top-[30vh]">

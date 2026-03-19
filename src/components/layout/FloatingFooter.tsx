@@ -29,24 +29,30 @@ export function FloatingFooter() {
     // Hide initially via GSAP
     gsap.set(footerRef.current, { y: 150, opacity: 0 });
 
-    let lastScrollY = window.scrollY;
-
     ScrollTrigger.create({
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
         const currentScroll = self.scroll();
-        const threshold = window.innerHeight * 0.8; // Visible only from second section (approx after first screen)
+        const direction = self.direction; // 1 for down, -1 for up
+        const threshold = window.innerHeight * 0.8; 
         
-        if (currentScroll > threshold && currentScroll < lastScrollY) {
-          gsap.to(footerRef.current, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", overwrite: true });
-        } else if (currentScroll > lastScrollY || currentScroll <= threshold) {
-          // Hide if scrolling DOWN or if we are still at the top section
+        const isScrollingUp = direction === -1;
+        const pastThreshold = currentScroll > threshold;
+
+        if (pastThreshold) {
+          if (isScrollingUp) {
+            // Show when scrolling up
+            gsap.to(footerRef.current, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", overwrite: true });
+          } else {
+            // Hide when scrolling down
+            gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+          }
+        } else {
+          // Hide if not past threshold
           gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
         }
-        
-        lastScrollY = currentScroll;
       },
     });
   }, { scope: footerRef });

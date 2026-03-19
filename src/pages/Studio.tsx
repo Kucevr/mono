@@ -142,7 +142,7 @@ export function Studio() {
       </section>
 
       {/* History Horizontal Scroll (Black) */}
-      <section ref={scrollContainerRef} className="relative w-full overflow-hidden bg-black text-white z-30">
+      <section ref={scrollContainerRef} className="relative w-full overflow-visible bg-black text-white z-30">
       <div ref={scrollSectionRef} className="w-[400vw] h-screen flex relative">
            {[
              { year: "23", title: "Brand Evolution", desc: "We refined Mōno™ Studio's visual identity and positioned the brand around clarity, minimalism, and precision. Our focus shifted toward high end digital experiences..." },

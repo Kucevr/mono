@@ -109,7 +109,7 @@ export function Hero() {
                 </p>
 
                 {/* Единый компонент кнопки с тенью */}
-                <PulseButton className="mt-2" dark={false}>Let's talk</PulseButton>
+                <PulseButton href="/contact" className="mt-2" dark={false}>Let's talk</PulseButton>
               </div>
             </div>
 

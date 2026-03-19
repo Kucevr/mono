@@ -38,7 +38,7 @@ export function MonoFooter() {
           </h2>
           
           <div className="relative shrink-0 md:mb-2">
-            <PulseButton lightShadow className="bg-[#1a1a1a] hover:bg-[#2a2a2a] text-white border border-white/10 shadow-2xl">
+            <PulseButton href="/contact" lightShadow className="bg-[#1a1a1a] hover:bg-[#2a2a2a] text-white border border-white/10 shadow-2xl">
               Let's Collaborate
             </PulseButton>
           </div>
@@ -66,7 +66,7 @@ export function MonoFooter() {
                 placeholder="E-mail" 
                 className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors text-lg pr-32"
               />
-              <button className="absolute right-2 top-2 bottom-2 bg-black border border-white/20 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] text-white rounded-full px-6 text-lg font-semibold tracking-tight transition-all duration-300">
+              <button type="button" onClick={() => window.location.href = "mailto:contact@monostudio.io?subject=Newsletter%20subscription"} className="absolute right-2 top-2 bottom-2 bg-black border border-white/20 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] text-white rounded-full px-6 text-lg font-semibold tracking-tight transition-all duration-300">
                 Subscribe
               </button>
             </div>

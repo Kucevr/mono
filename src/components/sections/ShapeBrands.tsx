@@ -58,7 +58,7 @@ export function ShapeBrands() {
             </div>
             <div>
               <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight max-w-75 leading-tight mb-8">Pricing with complete transparency</h3>
-              <PulseButton className="w-max mt-auto">View pricing</PulseButton>
+              <PulseButton href="/#pricing" className="w-max mt-auto">View pricing</PulseButton>
             </div>
           </div>
         </div>

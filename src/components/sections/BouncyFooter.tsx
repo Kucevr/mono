@@ -17,7 +17,7 @@ export function BouncyFooter() {
         </h2>
         
         {/* Используем универсальный плагин-кнопку */}
-        <PulseButton>Get in touch</PulseButton>
+        <PulseButton href="/contact">Get in touch</PulseButton>
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 export function ContactUs() {
   return (
-    <section className="relative w-full h-[80vh] min-h-[600px] flex items-end">
+    <section id="contact" className="relative w-full h-[80vh] min-h-[600px] flex items-end">
       {/* Background Image & Grain effect */}
       <div className="absolute inset-0 w-full h-full">
         <img 
@@ -21,27 +21,42 @@ export function ContactUs() {
               <span className="text-sm font-medium tracking-tight mb-2 inline-block opacity-80">(Contact us)</span>
               <h2 className="text-4xl sm:text-5xl font-bold tracking-tighter mb-8 bg-gradient-to-br from-white to-white/70 bg-clip-text text-transparent pb-1">Let's talk.</h2>
               
-              <form className="flex flex-col gap-4">
+              <form
+                className="flex flex-col gap-4"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const formData = new FormData(event.currentTarget);
+                  const firstName = String(formData.get("name") || "");
+                  const lastName = String(formData.get("lastName") || "");
+                  const email = String(formData.get("email") || "");
+                  const subject = encodeURIComponent(`Project inquiry from ${firstName} ${lastName}`.trim());
+                  const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nHello Mōno team,`);
+                  window.location.href = `mailto:contact@monostudio.io?subject=${subject}&body=${body}`;
+                }}
+              >
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input 
                     type="text" 
+                    name="name"
                     placeholder="Name" 
                     className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 placeholder:text-white/40 focus:outline-none focus:border-white/60 focus:bg-white/5 transition-all text-sm"
                   />
                   <input 
                     type="text" 
+                    name="lastName"
                     placeholder="Last Name" 
                     className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 placeholder:text-white/40 focus:outline-none focus:border-white/60 focus:bg-white/5 transition-all text-sm"
                   />
                 </div>
                 <input 
                   type="email" 
+                  name="email"
                   placeholder="Email" 
                   className="w-full bg-transparent border border-white/20 rounded-xl px-4 py-3 placeholder:text-white/40 focus:outline-none focus:border-white/60 focus:bg-white/5 transition-all text-sm"
                 />
 
                 <button 
-                  type="button"
+                  type="submit"
                   className="w-full bg-black text-white hover:bg-black/80 font-semibold py-4 rounded-xl mt-4 transition-colors tracking-tight text-sm"
                 >
                   Contact us

@@ -56,7 +56,7 @@ export function Pricing() {
   }, [index, prevIndex]);
 
   return (
-    <section className="relative w-full bg-white text-black py-40 px-8 lg:px-12 z-10">
+    <section id="pricing" className="relative w-full bg-white text-black py-40 px-8 lg:px-12 z-10">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="w-full flex justify-start mb-8">
           <span className="text-base font-medium tracking-tight text-gray-500">(Pricing)</span>
@@ -131,7 +131,7 @@ export function Pricing() {
                 <span className="text-sm text-gray-400 font-medium">Timeline:</span>
                 <span className="font-semibold">1-2 weeks</span>
               </div>
-              <PulseButton>Book a call</PulseButton>
+              <PulseButton href="/#contact">Book a call</PulseButton>
             </div>
           </div>
 
@@ -181,7 +181,7 @@ export function Pricing() {
                 <span className="text-sm text-gray-400 font-medium">Timeline:</span>
                 <span className="font-semibold">2-3 weeks</span>
               </div>
-              <PulseButton>Book a call</PulseButton>
+              <PulseButton href="/#contact">Book a call</PulseButton>
             </div>
           </div>
         </div>

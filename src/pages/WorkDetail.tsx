@@ -161,7 +161,7 @@ export function WorkDetail() {
                   <p className="text-xl md:text-2xl font-bold tracking-tight leading-tight mb-8">
                      {work.finalThoughts}
                   </p>
-                  <PulseButton>Live project</PulseButton>
+                  <PulseButton href="/contact">Live project</PulseButton>
               </div>
            </div>
 
@@ -172,13 +172,13 @@ export function WorkDetail() {
 
       {/* Related Works (Gray instead of black) */}
       <section className="relative w-full bg-[#e5e5e5] text-black pt-40 pb-32 px-4 md:px-8 lg:px-12 z-20">
-          <div className="max-w-screen-xl mx-auto flex flex-col items-center">
+          <div className="max-w-7xl mx-auto flex flex-col items-center">
              <div className="text-sm font-medium tracking-tight mb-4 text-center">(Portfolio 23-26©)</div>
              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-16 text-center">Related Works</h2>
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                 <Link to="/work/one-step" className="flex flex-col gap-4 group">
-                   <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden bg-zinc-200">
+                   <div className="w-full aspect-4/5 rounded-3xl overflow-hidden bg-zinc-200">
                       <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Related" />
                    </div>
                    <div className="flex justify-between items-center text-sm font-bold tracking-tight">
@@ -187,7 +187,7 @@ export function WorkDetail() {
                    </div>
                 </Link>
                 <Link to="/work/bold-moves" className="flex flex-col gap-4 group">
-                   <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden bg-zinc-200">
+                   <div className="w-full aspect-4/5 rounded-3xl overflow-hidden bg-zinc-200">
                       <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Related" />
                    </div>
                    <div className="flex justify-between items-center text-sm font-bold tracking-tight">

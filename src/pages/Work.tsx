@@ -58,29 +58,21 @@ function WorkCard({ work, className = "", aspect = "4/5" }: { work: typeof works
 
   useEffect(() => {
     setActiveProgress(0);
-
-    const duration = 2500;
-    const timeoutId = window.setTimeout(() => {
-      setActiveImage((prev) => (prev + 1) % totalImages);
-    }, duration);
-
-    let animationFrame = 0;
-    const start = performance.now();
-
-    const tick = (now: number) => {
-      const nextProgress = Math.min(100, ((now - start) / duration) * 100);
-      setActiveProgress(nextProgress);
-
-      if (nextProgress < 100) {
-        animationFrame = window.requestAnimationFrame(tick);
-      }
-    };
-
-    animationFrame = window.requestAnimationFrame(tick);
+    const tweenState = { progress: 0 };
+    const tween = gsap.to(tweenState, {
+      progress: 100,
+      duration: 2.5,
+      ease: "none",
+      onUpdate: () => {
+        setActiveProgress(tweenState.progress);
+      },
+      onComplete: () => {
+        setActiveImage((prev) => (prev + 1) % totalImages);
+      },
+    });
 
     return () => {
-      window.clearTimeout(timeoutId);
-      window.cancelAnimationFrame(animationFrame);
+      tween.kill();
     };
   }, [activeImage, totalImages]);
 
@@ -115,10 +107,11 @@ function WorkCard({ work, className = "", aspect = "4/5" }: { work: typeof works
           {work.images.map((_, i) => (
             <div key={i} className="flex-1 rounded-full bg-white/30 overflow-hidden relative">
               <div 
-                className="absolute top-0 left-0 w-full bg-white transition-all ease-linear"
+                className="absolute top-0 left-0 w-full bg-white"
                 style={{
-                  height: i < activeImage ? '100%' : (i === activeImage ? `${activeProgress}%` : '0%'),
-                  transitionDuration: i === activeImage ? '80ms' : (i < activeImage ? '0ms' : '300ms'),
+                  height: '100%',
+                  transformOrigin: 'top',
+                  transform: `scaleY(${i < activeImage ? 1 : (i === activeImage ? activeProgress / 100 : 0)})`,
                   opacity: i > activeImage ? 0 : 1
                 }}
               />

@@ -65,7 +65,7 @@ export function Stats() {
         <p className="text-gray-400 font-medium max-w-xl text-base sm:text-lg mb-10 px-4">
           Our success is reflected in the numbers we achieve for our clients. Every project is designed with measurable growth at its core.
         </p>
-        <PulseButton lightShadow className="bg-[#1a1a1a] text-white border border-white/10 hover:bg-[#2a2a2a] shadow-2xl">
+        <PulseButton href="/contact" lightShadow className="bg-[#1a1a1a] text-white border border-white/10 hover:bg-[#2a2a2a] shadow-2xl">
           Let's talk
         </PulseButton>
       </div>
