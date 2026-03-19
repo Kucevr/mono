@@ -9,11 +9,11 @@ export function Pricing() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = window.setTimeout(() => {
       setPrevIndex(index);
       setIndex((prev) => (prev + 1) % words.length);
     }, 3000);
-    return () => clearInterval(timer);
+    return () => window.clearTimeout(timer);
   }, [index, words.length]);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export function Pricing() {
     
     wordElements.forEach((wordElement, i) => {
       const chars = wordElement.querySelectorAll('.char');
+      gsap.killTweensOf(chars);
       
       if (i === index) {
         // Анимируем появление текущего слова (с небольшой задержкой, чтобы предыдущее успело уйти)
@@ -35,6 +36,7 @@ export function Pricing() {
             delay: 0.2, // добавленная задержка
             stagger: 0.03,
             ease: "power3.out",
+            overwrite: true,
           }
         );
       } else if (i === prevIndex) {
@@ -44,6 +46,7 @@ export function Pricing() {
           duration: 0.4,
           stagger: 0.02,
           ease: "power3.in",
+          overwrite: true,
         });
       } else {
         // Остальные слова просто прячем снизу без анимации, чтобы они были готовы
@@ -54,13 +57,13 @@ export function Pricing() {
 
   return (
     <section className="relative w-full bg-white text-black py-40 px-8 lg:px-12 z-10">
-      <div className="max-w-screen-xl mx-auto flex flex-col items-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="w-full flex justify-start mb-8">
           <span className="text-base font-medium tracking-tight text-gray-500">(Pricing)</span>
         </div>
         <div 
           ref={containerRef}
-          className="relative h-[1.3em] min-h-[90px] sm:min-h-[110px] w-full flex items-center justify-center overflow-hidden mb-4"
+          className="relative h-[1.3em] min-h-22.5 sm:min-h-27.5 w-full flex items-center justify-center overflow-hidden mb-4"
         >
           {words.map((word, i) => (
             <h2
@@ -68,7 +71,7 @@ export function Pricing() {
               className={`word-container absolute text-5xl sm:text-6xl md:text-7xl lg:text-8xl whitespace-nowrap font-bold tracking-tight`}
             >
               {word.split('').map((char, charIndex) => (
-                <span key={charIndex} className="inline-block overflow-hidden pb-4 pt-4 px-[1px]">
+                <span key={charIndex} className="inline-block overflow-hidden pb-4 pt-4 px-px">
                   <span className="char inline-block">{char === " " ? "\u00A0" : char}</span>
                 </span>
               ))}
@@ -85,7 +88,7 @@ export function Pricing() {
           {/* Starter Plan */}
           <div className="w-full md:w-1/2 bg-[#f4f4f5] rounded-3xl p-4 lg:p-6 flex flex-col relative z-10 border border-transparent h-full">
             {/* Metallic orb icon placeholder */}
-            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-gradient-to-br from-gray-300 via-gray-400 to-gray-600 shadow-inner" />
+            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-linear-to-br from-gray-300 via-gray-400 to-gray-600 shadow-inner" />
             
             <h3 className="text-2xl font-bold tracking-tight mb-4">Starter</h3>
             <p className="text-gray-500 font-medium mb-8 max-w-sm">
@@ -135,7 +138,7 @@ export function Pricing() {
           {/* Growth Plan */}
           <div className="w-full md:w-1/2 bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-3xl p-4 lg:p-6 flex flex-col relative z-20 border border-gray-100 h-full">
             {/* Colorful orb icon placeholder */}
-            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-indigo-500 to-cyan-400 shadow-lg" />
+            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-linear-to-tr from-pink-500 via-indigo-500 to-cyan-400 shadow-lg" />
             
             <h3 className="text-2xl font-bold tracking-tight mb-4">Growth</h3>
             <p className="text-gray-500 font-medium mb-8 max-w-sm">

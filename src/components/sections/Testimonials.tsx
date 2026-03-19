@@ -124,7 +124,7 @@ export function Testimonials() {
         className="absolute top-0 left-0 w-1/2 h-full z-50 overflow-hidden"
       >
         <div 
-          className="door-bg absolute top-0 left-0 w-[100vw] h-[120%]"
+          className="door-bg absolute top-0 left-0 w-screen h-[120%]"
           style={{ 
             backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")', 
             backgroundSize: 'cover', 
@@ -137,7 +137,7 @@ export function Testimonials() {
         className="absolute top-0 right-0 w-1/2 h-full z-50 overflow-hidden"
       >
         <div 
-          className="door-bg absolute top-0 right-0 w-[100vw] h-[120%]"
+          className="door-bg absolute top-0 right-0 w-screen h-[120%]"
           style={{ 
             backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")', 
             backgroundSize: 'cover', 
@@ -158,27 +158,29 @@ export function Testimonials() {
         </div>
 
         {/* Stacked Cards */}
-        <div className="relative w-full max-w-[320px] h-[360px] sm:max-w-[350px] sm:h-[450px] md:max-w-none md:w-[420px] md:h-[500px] mt-4 mb-40 md:mt-0 mx-auto md:mx-0">
+        <div className="relative isolate w-full max-w-80 h-90 sm:max-w-87.5 sm:h-112.5 md:max-w-none md:w-105 md:h-125 mt-4 mb-40 md:mt-0 mx-auto md:mx-0">
           {testimonials.map((t, i) => (
             <div 
               key={t.id}
               ref={el => { cardsRef.current[i] = el; }}
-              className="absolute inset-0 rounded-3xl p-8 sm:p-10 flex flex-col justify-center shadow-xl md:shadow-2xl border border-black/5 origin-center will-change-transform"
+              className="absolute inset-0 rounded-3xl p-8 sm:p-10 flex flex-col justify-center shadow-xl md:shadow-2xl border border-black/5 origin-center will-change-transform overflow-hidden"
               style={{
                 background: t.bg.startsWith('url') ? t.bg : t.bg,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: t.color,
                 zIndex: testimonials.length - i, // Top card has highest z-index
-                transform: `rotate(${i * -2}deg) translate(0, ${i * 5}px)`, // Slight stagger visually
+                transform: `translateZ(0) rotate(${i * -2}deg) translate(0, ${i * 5}px)`, // Slight stagger visually
+                transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden',
               }}
             >
               {/* Optional inner overlay for readable text if bg is an image */}
               {t.bg.startsWith('url') && (
-                <div className="absolute inset-0 bg-black/40 rounded-3xl z-[-1]" />
+                <div className="absolute inset-0 bg-black/40 rounded-3xl z-0 pointer-events-none" />
               )}
               
-              <div className="z-10 flex flex-col h-full">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className="mb-auto">
                     {/* Placeholder for top logo/pattern */}
                     {i === 3 ? (
@@ -196,7 +198,7 @@ export function Testimonials() {
                   {t.text}
                 </p>
                 <div className="mt-auto flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-neutral-300 overflow-hidden flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-full bg-neutral-300 overflow-hidden shrink-0" />
                   <div>
                     <div className="font-bold text-sm">{t.author}</div>
                     <div className="text-xs opacity-70">{t.role}</div>
@@ -207,7 +209,7 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="text-sm md:text-lg font-bold tracking-tight w-[60px] text-right hidden md:block">
+        <div className="text-sm md:text-lg font-bold tracking-tight w-15 text-right hidden md:block">
           0{activeIndex + 1} /0{testimonials.length}
         </div>
       </div>

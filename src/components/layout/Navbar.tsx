@@ -16,7 +16,7 @@ function SidebarLink({ href, children }: { href: string; children: ReactNode }) 
         <span className="absolute left-0 top-[110%] block group-hover:-translate-y-[110%] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] will-change-transform">{children}</span>
       </div>
       {/* Подчеркивание заливается слева направо */}
-      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-in-out" />
     </Link>
   );
 }
@@ -25,10 +25,10 @@ function SidebarLink({ href, children }: { href: string; children: ReactNode }) 
 function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link to={href} className="relative overflow-hidden h-6 group cursor-pointer inline-flex items-center text-current">
-      <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
+      <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-in-out">
         {children}
       </span>
-      <span className="absolute left-0 top-full block group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
+      <span className="absolute left-0 top-full block group-hover:-translate-y-full transition-transform duration-500 ease-in-out">
         {children}
       </span>
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-current scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500" />
@@ -39,21 +39,33 @@ function NavLink({ href, children }: { href: string; children: ReactNode }) {
 export function Navbar({ workCount = 4 }: { workCount?: number }) {
   const navRef = useRef<HTMLHeadElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuOpenRef = useRef(menuOpen);
+
+  useEffect(() => {
+    menuOpenRef.current = menuOpen;
+  }, [menuOpen]);
 
   useGSAP(() => {
-    gsap.from(navRef.current, {
+    if (!navRef.current) return;
+
+    gsap.set(navRef.current, { y: 0, opacity: 1 });
+
+    const introTween = gsap.fromTo(navRef.current, {
       y: -100,
       opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
       duration: 1,
       ease: "power3.out",
     });
 
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
-        if(menuOpen) return;
+        if (menuOpenRef.current) return;
         const currentScroll = self.scroll();
         if (currentScroll > 50) {
           gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
@@ -62,7 +74,12 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
         }
       },
     });
-  }, { scope: navRef, dependencies: [menuOpen] });
+
+    return () => {
+      trigger.kill();
+      introTween.kill();
+    };
+  }, { scope: navRef });
 
   // Отключаем скролл
   useEffect(() => {
@@ -80,13 +97,13 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
         )}
       >
         {/* Логотип с ховер-эффектом. */}
-        <Link to="/" className="logo-container group flex items-center gap-[6px] cursor-pointer pointer-events-auto">
+        <Link to="/" className="logo-container group flex items-center gap-1.5 cursor-pointer pointer-events-auto">
           {/* Имитация цветного градиентного шарика логотипа */}
-          <div className="w-[32px] h-[32px] rounded-full bg-gradient-to-tr from-[#f953c6] via-[#6B5FFF] to-[#5C90FF] shrink-0" />
+          <div className="w-8 h-8 rounded-full bg-linear-to-tr from-[#f953c6] via-[#6B5FFF] to-[#5C90FF] shrink-0" />
           
-          <div className="font-bold text-[20px] relative w-[100px] select-none text-current flex flex-col justify-center h-[30px]">
-            <div className="transition-transform duration-300 ease-out group-hover:-translate-y-[10px]">
-              <span className="tracking-[-0.04em] leading-none">Mōno<span className="text-[12px] align-top tracking-normal font-medium ml-[1px]">™</span></span>
+          <div className="font-bold text-[20px] relative w-25 select-none text-current flex flex-col justify-center h-7.5">
+            <div className="transition-transform duration-300 ease-out group-hover:-translate-y-2.5">
+              <span className="tracking-[-0.04em] leading-none">Mōno<span className="text-[12px] align-top tracking-normal font-medium ml-px">™</span></span>
             </div>
             <div className="absolute top-[45%] left-0 text-[18px] font-medium tracking-[-0.04em] leading-none text-gray-400 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
               Studio
@@ -96,7 +113,7 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
 
         {/* Центральные ссылки на десктопе */}
         <nav className={cn(
-          "hidden lg:flex flex-1 justify-center gap-16 text-[16px] font-bold tracking-tight absolute left-1/2 -translate-x-1/2 top-7 lg:top-[34px] transition-opacity duration-300 pointer-events-auto",
+          "hidden lg:flex flex-1 justify-center gap-16 text-[16px] font-bold tracking-tight absolute left-1/2 -translate-x-1/2 top-7 lg:top-8.5 transition-opacity duration-300 pointer-events-auto",
           menuOpen ? "opacity-0" : "opacity-100"
         )}>
           <NavLink href="/">Home</NavLink>
@@ -109,7 +126,7 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
         {/* Бургер-меню (превращается в крестик) */}
         <button 
           onClick={() => setMenuOpen(!menuOpen)}
-          className="w-8 h-[14px] flex flex-col justify-between items-end cursor-pointer group z-100 mt-1 relative pointer-events-auto"
+          className="w-8 h-3.5 flex flex-col justify-between items-end cursor-pointer group z-100 mt-1 relative pointer-events-auto"
         >
           <span className={cn("w-full h-[1.5px] block transition-transform duration-300 origin-right", menuOpen ? "bg-white -rotate-45" : "bg-current group-hover:w-3/4")} />
           <span className={cn("w-full h-[1.5px] block transition-transform duration-300 origin-right", menuOpen ? "bg-white rotate-45" : "bg-current w-3/4 group-hover:w-full")} />
@@ -165,7 +182,7 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
               menuOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             )}
           >
-            <div className="bg-gradient-to-r from-purple-800 to-blue-600 rounded-full p-2 pr-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
+            <div className="bg-linear-to-r from-purple-800 to-blue-600 rounded-full p-2 pr-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
               <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden shrink-0">
                 <img src={`https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100&q=80`} alt="Denis" className="w-full h-full object-cover" />
               </div>

@@ -127,7 +127,7 @@ export function Studio() {
   }, []);
 
   return (
-    <main className="relative min-h-screen z-40 bg-[#0e100f]">
+   <main className="relative min-h-screen z-40 bg-background">
       <Navbar />
 
       {/* About Mono Header (White) */}
@@ -143,14 +143,14 @@ export function Studio() {
 
       {/* History Horizontal Scroll (Black) */}
       <section ref={scrollContainerRef} className="relative w-full overflow-hidden bg-black text-white z-30">
-        <div ref={scrollSectionRef} className="w-[400vw] h-screen flex relative">
+      <div ref={scrollSectionRef} className="w-[400vw] h-screen flex relative">
            {[
              { year: "23", title: "Brand Evolution", desc: "We refined Mōno™ Studio's visual identity and positioned the brand around clarity, minimalism, and precision. Our focus shifted toward high end digital experiences..." },
              { year: "24", title: "Digital Immersive", desc: "Pushing the boundaries of what was possible in the browser, 2024 saw us implementing heavy WebGL experiences and pushing immersive motion design." },
              { year: "25", title: "Global Expansion", desc: "Opening new horizons, we extended our physical presence to key global hubs, collaborating with ambitious enterprise platforms and elevating product architecture." },
              { year: "26", title: "Future Ready", desc: "A culmination of strategic foresight and aesthetic restraint. We establish design systems that form the bedrock of the modern internet. Our best work is yet to come." }
            ].map((item, i) => (
-              <div key={item.year} className="history-panel w-[100vw] h-screen shrink-0 relative flex items-center px-12 lg:px-32">
+              <div key={item.year} className="history-panel w-screen h-screen shrink-0 relative flex items-center px-12 lg:px-32">
                  <img src={`https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2600&auto=format&fit=crop&sig=${i}`} className="absolute top-0 left-0 w-full h-full object-cover opacity-70" alt={`Year ${item.year}`} />
                  <div className="relative z-10 w-full max-w-xl text-white drop-shadow-2xl">
                     <h2 className="history-fade-year text-[10vw] leading-none font-bold tracking-tighter mb-8 drop-shadow-xl">(©{item.year})</h2>
@@ -231,9 +231,9 @@ export function Studio() {
               </div>
 
               <div className="flex flex-col gap-8">
-                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-[400px] object-cover" alt="Keyboard typing" />
-                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-[400px] object-cover" alt="Man in glasses" />
-                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-[400px] object-cover" alt="Group of people" />
+                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-100 object-cover" alt="Keyboard typing" />
+                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-100 object-cover" alt="Man in glasses" />
+                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop" className="rounded-3xl w-full h-100 object-cover" alt="Group of people" />
               </div>
            </div>
 
@@ -283,7 +283,7 @@ export function Studio() {
                    { name: "Maya Laurent", role: "Framer Specialist", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600&auto=format&fit=crop" }
                  ].map((member, i) => (
                     <div key={i} className="flex flex-col gap-4">
-                       <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden bg-gray-300">
+                       <div className="w-full aspect-4/5 rounded-3xl overflow-hidden bg-gray-300">
                           <img src={member.img} className="w-full h-full object-cover" alt={member.name} />
                        </div>
                        <div>
@@ -309,7 +309,7 @@ export function Studio() {
              {LogoIcons.map((Logo, idx) => (
                <div 
                  key={idx} 
-                 className="partner-card-studio relative rounded-xl aspect-[2/1] flex items-center justify-center transform-style-3d shadow-sm"
+                 className="partner-card-studio relative rounded-xl aspect-2/1 flex items-center justify-center transform-style-3d shadow-sm"
                  style={{ transformStyle: 'preserve-3d' }}
                >
                  <div className="absolute inset-0 flex items-center justify-center bg-white rounded-xl backface-hidden" style={{ backfaceVisibility: 'hidden' }}>

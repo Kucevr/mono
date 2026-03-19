@@ -27,10 +27,10 @@ export function ShapeBrands() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="flex flex-col gap-4">
-          <div className="bg-[#1c1c1c] text-white rounded-2xl p-6 sm:p-8 aspect-square sm:aspect-[2/1] lg:aspect-auto h-full lg:max-h-[350px] relative overflow-hidden flex flex-col justify-between">
+          <div className="bg-[#1c1c1c] text-white rounded-2xl p-6 sm:p-8 aspect-square sm:aspect-2/1 lg:aspect-auto h-full lg:max-h-87.5 relative overflow-hidden flex flex-col justify-between">
             <div className="relative z-10">
               <h3 className="text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tighter mb-4">+13</h3>
-              <p className="text-xl sm:text-2xl font-medium max-w-[200px] leading-tight">Team members across the World</p>
+              <p className="text-xl sm:text-2xl font-medium max-w-50 leading-tight">Team members across the World</p>
             </div>
             <div className="absolute top-6 right-6 sm:top-8 sm:right-8 flex flex-col items-end gap-2">
                <span className="text-sm sm:text-base font-semibold tracking-tight text-white/80">(Team of experts)</span>
@@ -42,13 +42,13 @@ export function ShapeBrands() {
                </div>
             </div>
             {/* World Map Background Placeholder */}
-            <div className="absolute bottom-0 right-0 w-[80%] h-[100%] opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '10px 10px', maskImage: 'linear-gradient(to top left, black, transparent)' }} />
+            <div className="absolute bottom-0 right-0 w-[80%] h-full opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '10px 10px', maskImage: 'linear-gradient(to top left, black, transparent)' }} />
           </div>
 
-          <div className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative shadow-sm h-full max-h-none lg:max-h-[350px] min-h-[350px]">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative shadow-sm h-full max-h-none lg:max-h-87.5 min-h-87.5">
             <div className="flex flex-col sm:flex-row justify-between items-start mb-8 sm:mb-12 gap-4 sm:gap-0">
                <div className="flex items-center gap-2">
-                 <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500" />
+                 <div className="w-6 h-6 rounded-full bg-linear-to-tr from-purple-500 to-blue-500" />
                  <span className="font-bold text-lg">Mōno™</span>
                </div>
                <div className="sm:text-right">
@@ -57,13 +57,13 @@ export function ShapeBrands() {
                </div>
             </div>
             <div>
-              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight max-w-[300px] leading-tight mb-8">Pricing with complete transparency</h3>
+              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight max-w-75 leading-tight mb-8">Pricing with complete transparency</h3>
               <PulseButton className="w-max mt-auto">View pricing</PulseButton>
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-indigo-900 via-purple-800 to-fuchsia-900 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-center items-center text-white h-full min-h-[500px] lg:max-h-[720px]">
+        <div className="bg-linear-to-br from-indigo-900 via-purple-800 to-fuchsia-900 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-center items-center text-white h-full min-h-125 lg:max-h-180">
           <span className="absolute top-6 sm:top-8 text-sm sm:text-base font-semibold tracking-tight">(Live collaboration)</span>
           
           <div className="w-full sm:w-[80%] bg-white/20 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 shadow-2xl relative mt-8 sm:mt-0">
@@ -83,7 +83,7 @@ export function ShapeBrands() {
             <div className="flex items-end gap-2 mb-4 sm:mr-8 flex-col">
               <div className="bg-[#1c1c1c] text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">Sure</div>
               <div className="bg-[#1c1c1c] text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">We'll update it shortly</div>
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 absolute right-2 sm:right-5 top-55%]" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-linear-to-tr from-purple-500 to-blue-500 absolute right-2 sm:right-5 top-[55%]" />
             </div>
 
             <div className="flex items-start gap-2 mb-4">

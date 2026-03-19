@@ -52,16 +52,37 @@ const works = [
 
 function WorkCard({ work, className = "", aspect = "4/5" }: { work: typeof works[0], className?: string, aspect?: string }) {
   const [activeImage, setActiveImage] = useState(0);
+  const [activeProgress, setActiveProgress] = useState(0);
   const totalImages = work.images.length;
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveImage((prev) => (prev + 1) % totalImages);
-    }, 2500); // 2.5s per image
+    setActiveProgress(0);
 
-    return () => clearInterval(interval);
-  }, [totalImages]);
+    const duration = 2500;
+    const timeoutId = window.setTimeout(() => {
+      setActiveImage((prev) => (prev + 1) % totalImages);
+    }, duration);
+
+    let animationFrame = 0;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const nextProgress = Math.min(100, ((now - start) / duration) * 100);
+      setActiveProgress(nextProgress);
+
+      if (nextProgress < 100) {
+        animationFrame = window.requestAnimationFrame(tick);
+      }
+    };
+
+    animationFrame = window.requestAnimationFrame(tick);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, [activeImage, totalImages]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -96,8 +117,8 @@ function WorkCard({ work, className = "", aspect = "4/5" }: { work: typeof works
               <div 
                 className="absolute top-0 left-0 w-full bg-white transition-all ease-linear"
                 style={{
-                  height: i < activeImage ? '100%' : (i === activeImage ? '100%' : '0%'),
-                  transitionDuration: i === activeImage ? '2500ms' : (i < activeImage ? '0ms' : '300ms'),
+                  height: i < activeImage ? '100%' : (i === activeImage ? `${activeProgress}%` : '0%'),
+                  transitionDuration: i === activeImage ? '80ms' : (i < activeImage ? '0ms' : '300ms'),
                   opacity: i > activeImage ? 0 : 1
                 }}
               />
@@ -135,7 +156,7 @@ export function Work() {
       <Navbar workCount={works.length} />
 
       {/* Header */}
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12 text-center pt-32 pb-32 relative z-10 flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 text-center pt-32 pb-32 relative z-10 flex flex-col items-center">
         <div className="text-sm font-bold tracking-tight mb-6">(Portfolio 23-26©)</div>
         <h1 className="text-[12vw] md:text-[8vw] font-bold tracking-tighter leading-none mb-10">Works <span className="text-3xl md:text-4xl text-gray-400 font-medium align-top">({works.length})</span></h1>
       </div>
@@ -144,7 +165,7 @@ export function Work() {
       <section className="relative w-full bg-white pt-32 pb-40 px-4 md:px-8 lg:px-12 z-20">
         <BouncyTop color="white" />
         
-        <div className="max-w-screen-xl mx-auto flex flex-col gap-16 md:gap-32">
+        <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-32">
           
           <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
             {/* Work 1: Large left */}
