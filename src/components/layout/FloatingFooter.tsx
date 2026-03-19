@@ -26,23 +26,21 @@ export function FloatingFooter() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Kill existing triggers to avoid "leaks" between routes
-    ScrollTrigger.getAll().forEach(t => {
-      if (t.vars.trigger === "body") t.kill();
-    });
+    if (!footerRef.current) return;
 
-    // Hide initially via GSAP
+    // Сброс состояния при смене страницы
     gsap.set(footerRef.current, { y: 150, opacity: 0 });
+    
+    // Принудительное обновление всех триггеров, чтобы GSAP пересчитал высоту нового роута
+    ScrollTrigger.refresh();
 
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: "body",
       start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
-        if (!footerRef.current) return;
-        
         const currentScroll = self.scroll();
-        const direction = self.direction; // 1 for down, -1 for up
+        const direction = self.direction; // 1 вниз, -1 вверх
         const threshold = window.innerHeight * 0.8; 
         
         const isScrollingUp = direction === -1;
@@ -50,21 +48,19 @@ export function FloatingFooter() {
 
         if (pastThreshold) {
           if (isScrollingUp) {
-            // Show when scrolling up
             gsap.to(footerRef.current, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", overwrite: true });
           } else {
-            // Hide when scrolling down
             gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
           }
         } else {
-          // Hide if not past threshold
           gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
         }
       },
     });
 
-    // Forced refresh for production/Vercel height calculation
-    ScrollTrigger.refresh();
+    return () => {
+      trigger.kill();
+    };
   }, { scope: footerRef, dependencies: [window.location.pathname] });
 
   return (

@@ -48,17 +48,25 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
   useGSAP(() => {
     if (!navRef.current) return;
 
-    // Ensure it starts visible
     gsap.set(navRef.current, { y: 0, opacity: 1 });
 
+    const introTween = gsap.fromTo(navRef.current, {
+      y: -100,
+      opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+    });
+
     const trigger = ScrollTrigger.create({
-      trigger: "body",
-      start: 0,
+      trigger: document.body,
+      start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
         if (menuOpenRef.current) return;
         const currentScroll = self.scroll();
-        // Simple logic: if at the very top, show. If scrolled down, hide.
         if (currentScroll > 50) {
           gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
         } else {
@@ -67,13 +75,11 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
       },
     });
 
-    // Refresh ScrollTrigger on route changes to ensure body height is correct
-    ScrollTrigger.refresh();
-
     return () => {
       trigger.kill();
+      introTween.kill();
     };
-  }, { scope: navRef, dependencies: [window.location.pathname] });
+  }, { scope: navRef });
 
   // Отключаем скролл
   useEffect(() => {
