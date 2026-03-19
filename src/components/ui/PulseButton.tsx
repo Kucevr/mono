@@ -14,18 +14,17 @@ interface PulseButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function PulseButton({ children, className, dark = false, lightShadow = false, href, ...props }: PulseButtonProps) {
   const btnBg = dark ? "bg-white text-black" : "bg-black text-white";
-  const shadowColor = (dark || lightShadow) ? "bg-white/30" : "bg-black/40";
+  const shadowColor = (dark || lightShadow) ? "bg-white/20" : "bg-black/40";
   const content = (
     <>
       {/* Статичная мягкая тень, которая выступает слева-снизу и не имеет ховер эффекта */}
       <div 
         className={cn(
-          "absolute top-4 -left-4 w-full h-full rounded-4xl blur-lg pointer-events-none z-0 rotate-0",
+          "absolute top-4 -left-4 w-full h-full rounded-4xl blur-xl pointer-events-none -z-10",
           shadowColor
         )}
-        style={{ transform: "translateZ(0)" }}
       />
-      <span className="relative z-10 block tracking-tight leading-none">
+      <span className="relative z-10 block tracking-tight leading-none pointer-events-none">
         {/* Split Text эффект со ступенчатой задержкой (stagger) для букв */}
         <span className="relative h-[1.1em] flex items-center overflow-hidden">
           <span className="flex">
