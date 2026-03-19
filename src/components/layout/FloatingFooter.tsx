@@ -1,11 +1,7 @@
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "../../lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Обычные ссылки в навбаре (как наверху)
 function FooterLink({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) {
@@ -24,50 +20,49 @@ function FooterLink({ href, children, className }: { href: string; children: Rea
 
 export function FloatingFooter() {
   const footerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
-  useGSAP(() => {
+  useEffect(() => {
     if (!footerRef.current) return;
 
-    // Сброс состояния при смене страницы
-    gsap.set(footerRef.current, { y: 150, opacity: 0 });
+    let lastScrollY = window.scrollY;
     
-    // Принудительное обновление всех триггеров, чтобы GSAP пересчитал высоту нового роута
-    ScrollTrigger.refresh();
+    // Мгновенный сброс при смене роута
+    gsap.set(footerRef.current, { y: 150, opacity: 0 });
 
-    const trigger = ScrollTrigger.create({
-      trigger: "body",
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: (self) => {
-        const currentScroll = self.scroll();
-        const direction = self.direction; // 1 вниз, -1 вверх
-        const threshold = window.innerHeight * 0.8; 
-        
-        const isScrollingUp = direction === -1;
-        const pastThreshold = currentScroll > threshold;
+    const handleScroll = () => {
+      if (!footerRef.current) return;
+      
+      const currentScrollY = window.scrollY;
+      const direction = currentScrollY > lastScrollY ? "down" : "up";
+      const threshold = window.innerHeight * 0.8;
+      
+      const isPastThreshold = currentScrollY > threshold;
+      const isScrollingUp = direction === "up";
 
-        if (pastThreshold) {
-          if (isScrollingUp) {
-            gsap.to(footerRef.current, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", overwrite: true });
-          } else {
-            gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
-          }
-        } else {
-          gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
-        }
-      },
-    });
+      if (isPastThreshold && isScrollingUp) {
+        gsap.to(footerRef.current, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", overwrite: true });
+      } else {
+        gsap.to(footerRef.current, { y: 150, opacity: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Вызываем один раз для проверки начального состояния (если вдруг загрузились в середине)
+    handleScroll();
 
     return () => {
-      trigger.kill();
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, { scope: footerRef, dependencies: [window.location.pathname] });
+  }, [location.pathname]);
 
   return (
     <div
       ref={footerRef}
       className={cn(
-        "fixed bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-9999 pointer-events-none w-[95%] sm:w-auto",
+        "fixed bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] pointer-events-none w-[95%] sm:w-auto",
       )}
     >
       <div className="bg-white text-black px-4 md:px-6 py-2 md:py-3 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.08)] ring-1 ring-black/5 pointer-events-auto flex items-center justify-between sm:justify-start gap-3 sm:gap-6 font-semibold text-xs sm:text-base overflow-hidden">
