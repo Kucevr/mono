@@ -20,9 +20,10 @@ export function PulseButton({ children, className, dark = false, lightShadow = f
       {/* Статичная мягкая тень, которая выступает слева-снизу и не имеет ховер эффекта */}
       <div 
         className={cn(
-          "absolute top-4 -left-4 w-full h-full rounded-4xl blur-xl pointer-events-none -z-10",
+          "absolute top-4 -left-4 w-full h-full rounded-4xl blur-xl pointer-events-none",
           shadowColor
         )}
+        style={{ zIndex: -1 }}
       />
       <span className="relative z-10 block tracking-tight leading-none pointer-events-none">
         {/* Split Text эффект со ступенчатой задержкой (stagger) для букв */}
@@ -64,11 +65,11 @@ export function PulseButton({ children, className, dark = false, lightShadow = f
         <a href={href} className={wrapperClassName} target={props.target} rel={props.rel}>
           <span
             className={cn(
-              "px-10 py-5 rounded-4xl text-[16px] font-semibold relative z-10 block tracking-tight leading-none outline-none focus:outline-none appearance-none",
+              "px-10 py-5 rounded-4xl text-[16px] font-semibold relative block tracking-tight leading-none outline-none focus:outline-none appearance-none",
               btnBg,
               className
             )}
-            style={{ WebkitTapHighlightColor: "transparent" }}
+            style={{ WebkitTapHighlightColor: "transparent", transform: 'translateZ(0)' }}
           >
             {content}
           </span>
@@ -80,11 +81,11 @@ export function PulseButton({ children, className, dark = false, lightShadow = f
       <Link to={href} className={wrapperClassName}>
         <span
           className={cn(
-            "px-10 py-5 rounded-4xl text-[16px] font-semibold relative z-10 block tracking-tight leading-none outline-none focus:outline-none appearance-none",
+            "px-10 py-5 rounded-4xl text-[16px] font-semibold relative block tracking-tight leading-none outline-none focus:outline-none appearance-none",
             btnBg,
             className
           )}
-          style={{ WebkitTapHighlightColor: "transparent" }}
+          style={{ WebkitTapHighlightColor: "transparent", transform: 'translateZ(0)' }}
         >
           {content}
         </span>
@@ -97,11 +98,11 @@ export function PulseButton({ children, className, dark = false, lightShadow = f
       <button
         {...props}
         className={cn(
-          "px-10 py-5 rounded-4xl text-[16px] font-semibold relative z-10 block tracking-tight leading-none outline-none focus:outline-none appearance-none",
+          "px-10 py-5 rounded-4xl text-[16px] font-semibold relative block tracking-tight leading-none outline-none focus:outline-none appearance-none",
           btnBg,
           className
         )}
-        style={{ WebkitTapHighlightColor: "transparent" }}
+        style={{ WebkitTapHighlightColor: "transparent", transform: 'translateZ(0)' }}
       >
         {content}
       </button>

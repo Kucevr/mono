@@ -26,14 +26,21 @@ export function FloatingFooter() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    // Kill existing triggers to avoid "leaks" between routes
+    ScrollTrigger.getAll().forEach(t => {
+      if (t.vars.trigger === "body") t.kill();
+    });
+
     // Hide initially via GSAP
     gsap.set(footerRef.current, { y: 150, opacity: 0 });
 
     ScrollTrigger.create({
-      trigger: document.body,
+      trigger: "body",
       start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
+        if (!footerRef.current) return;
+        
         const currentScroll = self.scroll();
         const direction = self.direction; // 1 for down, -1 for up
         const threshold = window.innerHeight * 0.8; 
@@ -55,7 +62,10 @@ export function FloatingFooter() {
         }
       },
     });
-  }, { scope: footerRef });
+
+    // Forced refresh for production/Vercel height calculation
+    ScrollTrigger.refresh();
+  }, { scope: footerRef, dependencies: [window.location.pathname] });
 
   return (
     <div
