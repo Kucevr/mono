@@ -62,13 +62,19 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
 
     const trigger = ScrollTrigger.create({
       trigger: document.body,
-      start: "top top",
+      start: 0,
       end: "bottom bottom",
       onUpdate: (self) => {
         if (menuOpenRef.current) return;
         const currentScroll = self.scroll();
-        if (currentScroll > 50) {
-          gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
+        const direction = self.direction; // 1 down, -1 up
+
+        if (currentScroll > 150) {
+          if (direction === 1) {
+            gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
+          } else {
+            gsap.to(navRef.current, { y: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+          }
         } else {
           gsap.to(navRef.current, { y: 0, duration: 0.4, ease: "power2.out", overwrite: true });
         }
