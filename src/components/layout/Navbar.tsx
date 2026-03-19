@@ -1,11 +1,7 @@
 import { useRef, useState, useEffect, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "../../lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Компонент большого меню из фото
 function SidebarLink({ href, children }: { href: string; children: ReactNode }) {
@@ -45,41 +41,28 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
     menuOpenRef.current = menuOpen;
   }, [menuOpen]);
 
-  useGSAP(() => {
+  useEffect(() => {
     if (!navRef.current) return;
 
-    gsap.set(navRef.current, { y: 0, opacity: 1 });
+    const handleScroll = () => {
+      if (menuOpenRef.current || !navRef.current) return;
+      
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 50) {
+        gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
+      } else {
+        gsap.to(navRef.current, { y: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+      }
+    };
 
-    const introTween = gsap.fromTo(navRef.current, {
-      y: -100,
-      opacity: 0,
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    const trigger = ScrollTrigger.create({
-      trigger: document.body,
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: (self) => {
-        if (menuOpenRef.current) return;
-        const currentScroll = self.scroll();
-        if (currentScroll > 50) {
-          gsap.to(navRef.current, { y: -100, duration: 0.4, ease: "power2.out", overwrite: true });
-        } else {
-          gsap.to(navRef.current, { y: 0, duration: 0.4, ease: "power2.out", overwrite: true });
-        }
-      },
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check initial state
 
     return () => {
-      trigger.kill();
-      introTween.kill();
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, { scope: navRef });
+  }, []); // Пустой массив, так как этот эффект должен жить весь цикл страницы
 
   // Отключаем скролл
   useEffect(() => {
