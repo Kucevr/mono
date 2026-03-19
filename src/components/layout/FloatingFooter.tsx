@@ -61,10 +61,10 @@ export function FloatingFooter() {
     <div
       ref={footerRef}
       className={cn(
-        "fixed bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-9999 pointer-events-none w-[95%] sm:w-auto flex justify-center",
+        "fixed bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-9999 pointer-events-none w-[95%] sm:w-auto",
       )}
     >
-      <div className="bg-white text-black px-4 md:px-6 py-2 md:py-3 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.08)] ring-1 ring-black/5 pointer-events-auto flex items-center justify-between sm:justify-start gap-3 sm:gap-6 font-semibold text-xs sm:text-base">
+      <div className="bg-white text-black px-4 md:px-6 py-2 md:py-3 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.08)] ring-1 ring-black/5 pointer-events-auto flex items-center justify-between sm:justify-start gap-3 sm:gap-6 font-semibold text-xs sm:text-base overflow-hidden">
         <FooterLink href="/">Home</FooterLink>
         <FooterLink href="/work" className="hidden sm:inline-flex">Work (4)</FooterLink>
         <FooterLink href="/work" className="sm:hidden">Work</FooterLink>

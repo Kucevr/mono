@@ -28,14 +28,33 @@ export function PulseButton({ children, className, dark = false, lightShadow = f
         {/* Split Text эффект со ступенчатой задержкой (stagger) для букв */}
         <span className="relative h-[1.1em] flex items-center overflow-hidden">
           <span className="flex">
-            {/* ... */}
+            {typeof children === 'string' ? children.split('').map((char, i) => (
+              <span 
+                key={`top-${i}`} 
+                className="block group-hover:-translate-y-[120%] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" 
+                style={{ transitionDelay: `${i * 0.02}s` }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            )) : <span className="block group-hover:-translate-y-[120%] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">{children}</span>}
+          </span>
+          <span className="absolute left-0 top-[120%] flex">
+            {typeof children === 'string' ? children.split('').map((char, i) => (
+              <span 
+                key={`bot-${i}`} 
+                className="block group-hover:-translate-y-[120%] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" 
+                style={{ transitionDelay: `${i * 0.02}s` }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            )) : <span className="block group-hover:-translate-y-[120%] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">{children}</span>}
           </span>
         </span>
       </span>
     </>
   );
 
-  const wrapperClassName = cn("relative group block w-max isolate", href && "cursor-pointer");
+  const wrapperClassName = cn("relative group block w-max", href && "cursor-pointer");
 
   if (href) {
     const isExternal = /^https?:\/\//.test(href) || href.startsWith("mailto:") || href.startsWith("tel:");
