@@ -138,7 +138,7 @@ export function Pricing() {
           {/* Growth Plan */}
           <div className="w-full md:w-1/2 bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-3xl p-4 lg:p-6 flex flex-col relative z-20 border border-gray-100 h-full">
             {/* Colorful orb icon placeholder */}
-            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-linear-to-tr from-pink-500 via-indigo-500 to-cyan-400 shadow-lg" />
+            <div className="absolute top-6 right-10 w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-indigo-500 to-cyan-400 shadow-lg animate-gradient-slow bg-[length:200%_200%]" />
             
             <h3 className="text-2xl font-bold tracking-tight mb-4">Growth</h3>
             <p className="text-gray-500 font-medium mb-8 max-w-sm">

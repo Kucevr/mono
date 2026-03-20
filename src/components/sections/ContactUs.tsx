@@ -30,8 +30,8 @@ export function ContactUs() {
                   const lastName = String(formData.get("lastName") || "");
                   const email = String(formData.get("email") || "");
                   const subject = encodeURIComponent(`Project inquiry from ${firstName} ${lastName}`.trim());
-                  const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nHello Mōno team,`);
-                  window.location.href = `mailto:contact@monostudio.io?subject=${subject}&body=${body}`;
+                  const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nHello Jōlo team,`);
+                  window.location.href = `mailto:contact@jolo.studio?subject=${subject}&body=${body}`;
                 }}
               >
                 <div className="flex flex-col sm:flex-row gap-4">

@@ -72,8 +72,8 @@ export function FloatingFooter() {
         
         <Link to="/" className="flex items-center gap-1.5 md:gap-2 px-1 md:px-2 group whitespace-nowrap">
           {/* Logo dot */}
-          <div className="w-5 h-5 md:w-7 md:h-7 shrink-0 rounded-full bg-linear-to-tr from-[#f953c6] via-[#6B5FFF] to-[#5C90FF] group-hover:scale-110 transition-transform duration-300" />
-          <span className="font-bold text-sm md:text-base tracking-tight">Mōno™</span>
+          <div className="w-5 h-5 md:w-7 md:h-7 shrink-0 rounded-full bg-gradient-to-tr from-blue-600 via-white to-black animate-gradient-slow bg-[length:200%_200%] group-hover:scale-110 transition-transform duration-300" />
+          <span className="font-bold text-sm md:text-base tracking-tight">Jōlo™</span>
         </Link>
 
         <FooterLink href="/studio">Studio</FooterLink>

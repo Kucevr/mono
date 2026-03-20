@@ -59,8 +59,8 @@ export function Stats() {
       <div className="pt-32 pb-20 px-4 md:px-8 lg:px-12 flex flex-col items-center text-center">
         <p className="text-base font-medium mb-6 tracking-tight">(Stats)</p>
         <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-8 max-w-4xl leading-tight">
-          <span className="inline-block w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-pink-500 via-indigo-500 to-cyan-400 align-middle mr-2 sm:mr-4 shadow-lg shadow-cyan-500/20" />
-          Mōno™ stands behind the data.
+          <span className="inline-block w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-blue-600 via-white to-black align-middle mr-2 sm:mr-4 shadow-lg shadow-blue-500/20 animate-gradient-slow bg-[length:200%_200%]" />
+          Jōlo™ stands behind the data.
         </h2>
         <p className="text-gray-400 font-medium max-w-xl text-base sm:text-lg mb-10 px-4">
           Our success is reflected in the numbers we achieve for our clients. Every project is designed with measurable growth at its core.
@@ -148,7 +148,7 @@ export function Stats() {
             {/* Overlay logo */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-16 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center">
-                 <span className="text-white font-bold text-2xl tracking-tighter mix-blend-overlay">Mō</span>
+                 <span className="text-white font-bold text-2xl tracking-tighter mix-blend-overlay">Jō</span>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export function Stats() {
             
             <div>
               <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight mb-8 md:mb-12">
-                "Mōno™ helped us simplify complexity. They streamlined our product narrative, improved performance, and delivered a digital experience that truly reflects our brand. The results were immediate — higher engagement."
+                "Jōlo™ helped us simplify complexity. They streamlined our product narrative, improved performance, and delivered a digital experience that truly reflects our brand. The results were immediate — higher engagement."
               </p>
               
               <div className="flex items-center gap-4">

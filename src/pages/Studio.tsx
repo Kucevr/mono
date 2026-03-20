@@ -130,12 +130,12 @@ export function Studio() {
    <main className="relative min-h-screen z-40 bg-background">
       <Navbar />
 
-      {/* About Mono Header (White) */}
+      {/* About Jōlo Header (White) */}
       <section className="relative w-full bg-white text-black pt-32 pb-24 px-4 md:px-8 lg:px-12 z-40">
         <div className="max-w-screen-2xl mx-auto">
            <div className="flex justify-center flex-col items-center text-center">
               <span className="text-sm font-bold tracking-tight mb-6">(Our Studio ©26)</span>
-              <h1 className="text-[12vw] md:text-[8vw] font-bold tracking-tighter leading-none">About Mōno™</h1>
+              <h1 className="text-[12vw] md:text-[8vw] font-bold tracking-tighter leading-none">About Jōlo™</h1>
            </div>
         </div>
         <BouncyBottom color="white" />
@@ -145,7 +145,7 @@ export function Studio() {
       <section ref={scrollContainerRef} className="relative w-full overflow-visible bg-black text-white z-30">
       <div ref={scrollSectionRef} className="w-[400vw] h-screen flex relative">
            {[
-             { year: "23", title: "Brand Evolution", desc: "We refined Mōno™ Studio's visual identity and positioned the brand around clarity, minimalism, and precision. Our focus shifted toward high end digital experiences..." },
+             { year: "23", title: "Brand Evolution", desc: "We refined Jōlo™ Studio's visual identity and positioned the brand around clarity, minimalism, and precision. Our focus shifted toward high end digital experiences..." },
              { year: "24", title: "Digital Immersive", desc: "Pushing the boundaries of what was possible in the browser, 2024 saw us implementing heavy WebGL experiences and pushing immersive motion design." },
              { year: "25", title: "Global Expansion", desc: "Opening new horizons, we extended our physical presence to key global hubs, collaborating with ambitious enterprise platforms and elevating product architecture." },
              { year: "26", title: "Future Ready", desc: "A culmination of strategic foresight and aesthetic restraint. We establish design systems that form the bedrock of the modern internet. Our best work is yet to come." }
@@ -180,7 +180,7 @@ export function Studio() {
             <div className="w-2 h-2 bg-black rounded-full hidden md:block" />
           </div>
                     <p className="text-xl md:text-3xl font-bold tracking-tighter leading-tight">
-                       Mōno™ Studio believes bold, distinctive design has the power to transform how we connect with the world and each other. We craft brands that perform seamlessly across digital and physical spaces — driven by strategy, shaped through collaboration, and executed with uncompromising precision.
+                       Jōlo™ Studio believes bold, distinctive design has the power to transform how we connect with the world and each other. We craft brands that perform seamlessly across digital and physical spaces — driven by strategy, shaped through collaboration, and executed with uncompromising precision.
                     </p>
                  </div>
                  
@@ -242,7 +242,7 @@ export function Studio() {
               <span className="text-base font-bold tracking-tight block mb-12 text-center md:text-left">(Success stories)</span>
               <div className="flex flex-col md:flex-row gap-12 items-center md:items-start justify-between">
                  <p className="text-2xl md:text-4xl font-bold tracking-tighter leading-tight max-w-4xl text-center md:text-left">
-                    "Mōno helped us simplify complexity, bringing our vision to life with an unmatched level of elegance and technical precision."
+                    "Jōlo helped us simplify complexity, bringing our vision to life with an unmatched level of elegance and technical precision."
                  </p>
                  <div className="flex flex-col items-center shrink-0 mt-8 md:mt-0">
                     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" className="w-32 h-32 rounded-full object-cover mb-6" alt="Elena Rossi" />

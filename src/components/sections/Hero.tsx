@@ -30,7 +30,7 @@ export function Hero() {
     // Карточка сжимается со всех сторон (origin-center по умолчанию, либо flex-center)
     // Убираем y: 3vh, чтобы сжималось ровно к центру по обеим осям
     tlScroll.to(heroCardRef.current, {
-      scale: 0.5,
+      scale: 0.35,
       borderRadius: "40px",
       duration: 1,
       ease: "power2.inOut"
@@ -88,7 +88,7 @@ export function Hero() {
               
               {/* Левый список услуг */}
               <div className="flex flex-col gap-[6px] font-semibold text-[15px] lg:text-[17px] tracking-tight w-64 hero-text">
-                {["Web Design", "Social Media", "Marketing", "Development", "SEO Optimization"].map((srv) => (
+                {["Web Design", "Social Media", "Branding", "Development", "SEO Optimization"].map((srv) => (
                   <div key={srv} className="hover:text-gray-400 cursor-pointer transition-colors duration-300">
                     {srv}
                   </div>
@@ -113,10 +113,10 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Огромный текст (Mōno™ Studio) поднятый чтобы не было пустот, как по фото */}
+            {/* Огромный текст (Jōlo™ Studio) поднятый чтобы не было пустот, как по фото */}
             <div className="absolute bottom-[20vh] md:bottom-[15vh] lg:bottom-[10vh] left-0 w-full px-6 lg:px-12 flex justify-between items-baseline pointer-events-none pb-4 huge-text">
               <h1 className="text-[18vw] leading-[0.75] font-medium tracking-[-0.05em]">
-                Mōno<span className="text-[7vw] align-top font-normal -ml-2">™</span>
+                Jōlo<span className="text-[7vw] align-top font-normal -ml-2">™</span>
               </h1>
               <h1 className="text-[18vw] leading-[0.75] font-medium tracking-[-0.05em]">
                 Studio
@@ -125,7 +125,7 @@ export function Hero() {
 
             {/* Копирайт */}
             <div className="absolute bottom-[40vh] right-[20%] translate-x-1/2 text-[12px] text-gray-500 font-semibold huge-text hidden lg:block">
-              © 2026 Mōno™ Studio
+              © 2026 Jōlo™ Studio
             </div>
 
           </div>

@@ -11,7 +11,7 @@ export function ShapeBrands() {
         </div>
         <div className="md:col-span-8">
           <div className="mb-4">
-            <span className="font-bold text-xl">Mōno™</span>
+            <span className="font-bold text-xl">Jōlo™</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-[5vw] font-medium tracking-tighter leading-[1.1]">
             We shape brands with focus, intention, and impact.
@@ -48,12 +48,12 @@ export function ShapeBrands() {
           <div className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative shadow-sm h-full max-h-none lg:max-h-87.5 min-h-87.5">
             <div className="flex flex-col sm:flex-row justify-between items-start mb-8 sm:mb-12 gap-4 sm:gap-0">
                <div className="flex items-center gap-2">
-                 <div className="w-6 h-6 rounded-full bg-linear-to-tr from-purple-500 to-blue-500" />
-                 <span className="font-bold text-lg">Mōno™</span>
+                 <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-600 via-white to-black shrink-0 animate-gradient-slow bg-[length:200%_200%]" />
+                 <span className="font-bold text-lg">Jōlo™</span>
                </div>
                <div className="sm:text-right">
                  <span className="text-sm sm:text-base font-bold tracking-tight block mb-2">(Performance Boost)</span>
-                 <p className="font-semibold text-sm sm:text-base">Page speed +78%,<br/>Bounce rate -13%</p>
+                 <p className="font-semibold text-sm sm:text-base">Organic Search +78%,<br/>Conversion Rate +13%</p>
                </div>
             </div>
             <div>
@@ -63,33 +63,32 @@ export function ShapeBrands() {
           </div>
         </div>
 
-        <div className="bg-linear-to-br from-indigo-900 via-purple-800 to-fuchsia-900 rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-center items-center text-white h-full min-h-125 lg:max-h-180">
+        <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-center items-center text-white h-full min-h-125 lg:max-h-180">
           <span className="absolute top-6 sm:top-8 text-sm sm:text-base font-semibold tracking-tight">(Live collaboration)</span>
           
-          <div className="w-full sm:w-[80%] bg-white/20 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 shadow-2xl relative mt-8 sm:mt-0">
+          <div className="w-full sm:w-[80%] bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 shadow-2xl relative mt-8 sm:mt-0">
             <span className="block text-center text-xs text-white/70 mb-4">Today 17:01</span>
             
             <div className="flex items-start gap-2 mb-4">
-              <div className="w-7 h-7 rounded-full bg-orange-400 shrink-0" />
+              <div className="w-7 h-7 rounded-full bg-blue-500 shrink-0" />
               <div className="flex flex-col gap-2">
-                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-sm font-medium">Hey hey!</div>
-                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-sm font-medium">Love the design</div>
-                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-sm font-medium">Can we tweak the hero?</div>
+                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-sm font-medium">Hey! The design looks sharp.</div>
+                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-sm font-medium">Can we refine the gradient?</div>
               </div>
             </div>
 
             <span className="block text-center text-xs text-white/70 mb-4 mt-6">Today 17:02</span>
 
             <div className="flex items-end gap-2 mb-4 sm:mr-8 flex-col">
-              <div className="bg-[#1c1c1c] text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">Sure</div>
-              <div className="bg-[#1c1c1c] text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">We'll update it shortly</div>
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-linear-to-tr from-purple-500 to-blue-500 absolute right-2 sm:right-5 top-[55%]" />
+              <div className="bg-blue-600 text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">Absolutely.</div>
+              <div className="bg-blue-600 text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">I'll update the brand palette now.</div>
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black absolute right-2 sm:right-5 top-[52.5%]" />
             </div>
 
             <div className="flex items-start gap-2 mb-4">
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-orange-400 shrink-0" />
+              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-blue-500 shrink-0" />
               <div className="flex flex-col gap-2">
-                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-xs sm:text-sm font-medium">Perfect! Thank you.</div>
+                <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-xs sm:text-sm font-medium">Perfect! Looks much better.</div>
               </div>
             </div>
           </div>

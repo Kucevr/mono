@@ -82,11 +82,11 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
         {/* Логотип с ховер-эффектом. */}
         <Link to="/" className="logo-container group flex items-center gap-1.5 cursor-pointer pointer-events-auto">
           {/* Имитация цветного градиентного шарика логотипа */}
-          <div className="w-8 h-8 rounded-full bg-linear-to-tr from-[#f953c6] via-[#6B5FFF] to-[#5C90FF] shrink-0" />
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 via-white to-black shrink-0 animate-gradient-slow bg-[length:200%_200%]" />
           
           <div className="font-bold text-[20px] relative w-25 select-none text-current flex flex-col justify-center h-7.5">
             <div className="transition-transform duration-300 ease-out group-hover:-translate-y-2.5">
-              <span className="tracking-[-0.04em] leading-none">Mōno<span className="text-[12px] align-top tracking-normal font-medium ml-px">™</span></span>
+              <span className="tracking-[-0.04em] leading-none">Jōlo<span className="text-[12px] align-top tracking-normal font-medium ml-px">™</span></span>
             </div>
             <div className="absolute top-[45%] left-0 text-[18px] font-medium tracking-[-0.04em] leading-none text-gray-400 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none">
               Studio
@@ -102,7 +102,6 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/studio">Studio</NavLink>
           <NavLink href="/work">Work ({workCount})</NavLink>
-          <NavLink href="/#news">News</NavLink>
           <NavLink href="/contact">Contact</NavLink>
         </nav>
 
@@ -165,7 +164,7 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
               menuOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             )}
           >
-            <div className="bg-linear-to-r from-purple-800 to-blue-600 rounded-full p-2 pr-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
+            <div className="bg-gradient-to-tr from-blue-600  to-black shrink-0 animate-gradient-slow bg-[length:200%_200%] rounded-full p-2 pr-6 flex items-center gap-4 cursor-pointer hover:scale-105 transition-transform duration-300">
               <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden shrink-0">
                 <img src={`https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100&q=80`} alt="Denis" className="w-full h-full object-cover" />
               </div>

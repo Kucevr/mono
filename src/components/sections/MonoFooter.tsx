@@ -53,8 +53,8 @@ export function MonoFooter() {
           {/* Left Column (Newsletter & Logo) */}
           <div className="flex flex-col max-w-sm lg:w-[40%]">
             <div className="flex items-center gap-3 mb-12">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 via-indigo-500 to-cyan-400" />
-              <span className="text-xl font-bold tracking-tight">Mōno™</span>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 via-white to-black animate-gradient-slow bg-[length:200%_200%]" />
+              <span className="text-xl font-bold tracking-tight">Jōlo™</span>
             </div>
 
             <span className="text-lg font-medium tracking-tight text-white/50 mb-4">(Newsletter)</span>
@@ -135,7 +135,7 @@ export function MonoFooter() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 mt-2 border-t border-white/10 text-sm text-white/30 tracking-tight gap-4">
-          <span>© 2026 Mōno™ Studio - Made by kutsev-studio</span>
+          <span>© 2026 Jōlo™ Studio - Made by kutsev-studio</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
