@@ -139,10 +139,10 @@ export function Stats() {
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8 lg:px-12 pb-16 md:pb-32">
         <div className="flex flex-col lg:flex-row gap-6 h-auto lg:h-[600px]">
           
-          <div className="w-full lg:w-[45%] bg-[#141414] rounded-3xl overflow-hidden relative aspect-square lg:aspect-auto">
+          <div className="w-full lg:w-[50%] bg-[#141414] rounded-3xl overflow-hidden relative aspect-square lg:aspect-auto">
             <img 
-              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop" 
-              alt="Fashion model" 
+              src="/photo/statsjo.webp" 
+              alt="Jōlo™" 
               className="w-full h-full object-cover"
             />
             {/* Overlay logo */}

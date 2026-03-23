@@ -27,7 +27,7 @@ const testimonials = [
     text: `"Their ability to listen, challenge assumptions, and translate ideas into a clean digital system."`,
     author: "Max Trump",
     role: "Founder of Light Studio®",
-    bg: "url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000&auto=format&fit=crop')", // Placeholder 3rd background
+    bg: "url('/photo/maxtrump.jpg')", // Placeholder 3rd background
     color: "white",
   },
   {
@@ -124,9 +124,9 @@ export function Testimonials() {
         className="absolute top-0 left-0 w-1/2 h-full z-50 overflow-hidden"
       >
         <div 
-          className="door-bg absolute top-0 left-0 w-screen h-[120%]"
+          className="door-bg absolute top-0 left-0 w-screen h-[100%]"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")', 
+            backgroundImage: 'url("/photo/testimonialsopendoor2.webp")', 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
           }}
@@ -137,9 +137,9 @@ export function Testimonials() {
         className="absolute top-0 right-0 w-1/2 h-full z-50 overflow-hidden"
       >
         <div 
-          className="door-bg absolute top-0 right-0 w-screen h-[120%]"
+          className="door-bg absolute top-0 right-0 w-screen h-[100%]"
           style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")', 
+            backgroundImage: 'url("/photo/testimonialsopendoor2.webp")', 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
           }}
@@ -165,9 +165,10 @@ export function Testimonials() {
               ref={el => { cardsRef.current[i] = el; }}
               className="absolute inset-0 rounded-3xl p-8 sm:p-10 flex flex-col justify-center shadow-xl md:shadow-2xl border border-black/5 origin-center will-change-transform overflow-hidden"
               style={{
-                background: t.bg.startsWith('url') ? t.bg : t.bg,
+                background: t.bg.startsWith('url') ? 'none' : t.bg,
+                backgroundImage: t.bg.startsWith('url') ? t.bg : 'none',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundPosition: 'top center', // Changed from center to top center usually better for portraits
                 color: t.color,
                 zIndex: testimonials.length - i, // Top card has highest z-index
                 transform: `translateZ(0) rotate(${i * -2}deg) translate(0, ${i * 5}px)`, // Slight stagger visually

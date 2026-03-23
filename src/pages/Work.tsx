@@ -13,7 +13,7 @@ const works = [
     title: "Forma Digital",
     year: "2026",
     images: [
-      "/photo/work/formadigital/main.webp",
+      "/photo/work/coda/main.webp",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
     ]
