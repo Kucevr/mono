@@ -276,7 +276,7 @@ export function Studio() {
               {/* Team Members Grid */}
               <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                  {[
-                   { name: "Adrian Keller", role: "Founder", img: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?q=80&w=600&auto=format&fit=crop" },
+                   { name: "Roman Kutsev", role: "Founder", img: "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?q=80&w=600&auto=format&fit=crop" },
                    { name: "Luca Moretti", role: "Lead Product Designer", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" },
                    { name: "Elena Novak", role: "UI/UX Designer", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" },
                    { name: "Daniel Hartmann", role: "Webflow Developer", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop" },
