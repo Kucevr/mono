@@ -13,7 +13,7 @@ const works = [
     title: "Forma Digital",
     year: "2026",
     images: [
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop",
+      "/photo/work/formadigital/main.webp",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
     ]
@@ -23,7 +23,7 @@ const works = [
     title: "Nero Vision",
     year: "2025",
     images: [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop",
+      "/photo/work/nerovision/main.webp",
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop"
     ]
@@ -33,7 +33,7 @@ const works = [
     title: "One Step",
     year: "2024",
     images: [
-      "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1600&auto=format&fit=crop",
+      "/photo/work/onestep/main.webp",
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1600&auto=format&fit=crop"
     ]
@@ -43,9 +43,9 @@ const works = [
     title: "Bold Moves",
     year: "2024",
     images: [
-      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=800&auto=format&fit=crop",
+      "/photo/work/boldmoves/main.webp",
       "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=800&auto=format&fit=crop"
+      "/photo/work/boldmoves/main.webp"
     ]
   }
 ];

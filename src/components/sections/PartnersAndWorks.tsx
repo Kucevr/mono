@@ -192,7 +192,7 @@ export function PartnersAndWorks() {
               onMouseLeave={() => setIsHoveringWork(false)}
             >
               <img 
-                src={`https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&q=80&w=1200&sig=${i}`}
+                src={`/photo/work/${project.id.replace("-", "")}/main.webp`}
                 alt={project.title} 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
