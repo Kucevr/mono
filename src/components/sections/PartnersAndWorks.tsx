@@ -183,7 +183,7 @@ export function PartnersAndWorks() {
             { id: "nero-vision", title: "Nero Vision" },
             { id: "one-step", title: "One Step" },
             { id: "bold-moves", title: "Bold Moves" }
-          ].map((project, i) => (
+          ].map((project) => (
             <Link 
               to={`/work/${project.id}`}
               key={`work-${project.id}`} 
