@@ -11,6 +11,22 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroCardRef = useRef<HTMLDivElement>(null);
 
+  // Фотографии для колонок галереи (по 6 штук для зацикливания скролла)
+  const galLine1 = [
+    "/photo/herogalery/line1.1.avif", "/photo/herogalery/line1.2.avif",
+    "/photo/herogalery/line1.1.avif", "/photo/herogalery/line1.2.avif",
+    "/photo/herogalery/line1.1.avif", "/photo/herogalery/line1.2.avif",
+  ];
+  const galLine2 = [
+    "/photo/herogalery/line2.1.avif", "/photo/herogalery/line2.2.avif", "/photo/herogalery/line2.3.avif",
+    "/photo/herogalery/line2.1.avif", "/photo/herogalery/line2.2.avif", "/photo/herogalery/line2.3.avif",
+  ];
+  const galLine3 = [
+    "/photo/herogalery/line3.1.avif", "/photo/herogalery/line3.2.avif",
+    "/photo/herogalery/line3.1.avif", "/photo/herogalery/line3.2.avif",
+    "/photo/herogalery/line3.1.avif", "/photo/herogalery/line3.2.avif",
+  ];
+
   useGSAP(() => {
     // Входная анимация текста
     const tlIntro = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -69,13 +85,13 @@ export function Hero() {
         {/* Gallery Background (черный фон с картинками за белой карточкой) */}
         <div className="absolute inset-0 w-full h-[200%] -top-[50%] flex justify-center gap-4 sm:gap-8 lg:gap-16 px-8 opacity-60 pointer-events-none">
           <div className="gallery-col-1 w-1/4 sm:w-1/3 flex flex-col gap-8">
-            {[1, 2, 3, 4, 5, 6].map(i => <div key={`c1-${i}`} className="w-full aspect-[4/5] bg-gray-800 rounded-xl overflow-hidden shrink-0"><img src={`https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&q=80&w=600&h=800`} alt="project" className="w-full h-full object-cover" /></div>)}
+            {galLine1.map((src, i) => <div key={`c1-${i}`} className="w-full aspect-[4/5] bg-gray-800 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
           <div className="gallery-col-2 w-1/4 sm:w-1/3 flex flex-col gap-8 -translate-y-[50%]">
-            {[1, 2, 3, 4, 5, 6].map(i => <div key={`c2-${i}`} className="w-full aspect-[3/4] bg-gray-700 rounded-xl overflow-hidden shrink-0"><img src={`https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600&h=800`} alt="project" className="w-full h-full object-cover" /></div>)}
+            {galLine2.map((src, i) => <div key={`c2-${i}`} className="w-full aspect-[3/4] bg-gray-700 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
           <div className="gallery-col-3 w-1/4 sm:w-1/3 flex flex-col gap-8">
-            {[1, 2, 3, 4, 5, 6].map(i => <div key={`c3-${i}`} className="w-full aspect-[4/5] bg-gray-900 rounded-xl overflow-hidden shrink-0"><img src={`https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600&h=800`} alt="project" className="w-full h-full object-cover" /></div>)}
+            {galLine3.map((src, i) => <div key={`c3-${i}`} className="w-full aspect-[4/5] bg-gray-900 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
         </div>
 
