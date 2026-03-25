@@ -83,14 +83,14 @@ export function Hero() {
       <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
         
         {/* Gallery Background (черный фон с картинками за белой карточкой) */}
-        <div className="absolute inset-0 w-full h-[200%] -top-[50%] flex justify-center gap-4 sm:gap-8 lg:gap-16 px-8 opacity-60 pointer-events-none">
-          <div className="gallery-col-1 w-1/4 sm:w-1/3 flex flex-col gap-8">
+        <div className="absolute inset-0 w-full h-[200%] -top-[50%] flex justify-center gap-4 sm:gap-8 lg:gap-16 px-4 sm:px-8 opacity-60 pointer-events-none">
+          <div className="gallery-col-1 w-[45%] sm:w-1/3 flex flex-col gap-4 sm:gap-8">
             {galLine1.map((src, i) => <div key={`c1-${i}`} className="w-full aspect-[4/5] bg-gray-800 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
-          <div className="gallery-col-2 w-1/4 sm:w-1/3 flex flex-col gap-8 -translate-y-[50%]">
+          <div className="gallery-col-2 w-[45%] sm:w-1/3 flex flex-col gap-4 sm:gap-8 -translate-y-[50%]">
             {galLine2.map((src, i) => <div key={`c2-${i}`} className="w-full aspect-[3/4] bg-gray-700 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
-          <div className="gallery-col-3 w-1/4 sm:w-1/3 flex flex-col gap-8">
+          <div className="gallery-col-3 hidden sm:flex w-1/3 flex-col gap-8">
             {galLine3.map((src, i) => <div key={`c3-${i}`} className="w-full aspect-[4/5] bg-gray-900 rounded-xl overflow-hidden shrink-0"><img src={src} alt="project" className="w-full h-full object-cover" /></div>)}
           </div>
         </div>
@@ -103,7 +103,7 @@ export function Hero() {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center h-full max-w-screen-2xl mx-auto w-full relative z-10 mt-20">
               
               {/* Левый список услуг */}
-              <div className="flex flex-col gap-[6px] font-semibold text-[15px] lg:text-[17px] tracking-tight w-64 hero-text">
+              <div className="flex flex-col gap-[6px] font-semibold mt-16 lg:mt-0 text-[15px] lg:text-[17px] tracking-tight w-64 hero-text">
                 {["Web Design", "Social Media", "Branding", "Development", "SEO Optimization"].map((srv) => (
                   <div key={srv} className="hover:text-gray-400 cursor-pointer transition-colors duration-300">
                     {srv}

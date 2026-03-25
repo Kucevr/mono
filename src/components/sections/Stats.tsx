@@ -1,6 +1,12 @@
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { BouncyTop } from "../ui/BouncyTop";
 import { BouncyBottom } from "../ui/BouncyBottom";
 import { PulseButton } from "../ui/PulseButton";
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const stats = [
@@ -51,8 +57,32 @@ const stats = [
 ];
 
 export function Stats() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // Only apply scroll flip on mobile (screens < 768px)
+    const mm = gsap.matchMedia();
+    
+    mm.add("(max-width: 767px)", () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".stat-card-inner");
+      
+      cards.forEach((card) => {
+        gsap.to(card, {
+          rotateY: 180,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+          }
+        });
+      });
+    });
+  }, { scope: containerRef });
+
   return (
-    <section className="relative w-full bg-[#0a0a0a] text-white z-40 mt-[-100px]">
+    <section ref={containerRef} className="relative w-full bg-[#0a0a0a] text-white z-40 mt-[-100px]">
       <BouncyTop color="#0a0a0a" />
       
       {/* Intro Header */}
@@ -84,7 +114,7 @@ export function Stats() {
             style={{ marginTop: typeof window !== 'undefined' && window.innerWidth >= 768 ? stat.marginTop : '0' }}
           >
             <div className="relative w-full aspect-square group [perspective:1000px]">
-              <div className="w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="stat-card-inner w-full h-full transition-transform duration-700 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)]">
                 
                 {/* Front */}
                 <div className="absolute inset-0 bg-[#141414] border border-white/5 rounded-3xl p-6 md:p-8 flex flex-col justify-between [backface-visibility:hidden]">

@@ -79,14 +79,14 @@ export function ShapeBrands() {
 
             <span className="block text-center text-xs text-white/70 mb-4 mt-6">Today 17:02</span>
 
-            <div className="flex items-end gap-2 mb-4 sm:mr-8 flex-col">
+            <div className="flex items-end gap-2 mb-4 mr-8 sm:mr-8 flex-col">
               <div className="bg-blue-600 text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">Absolutely.</div>
               <div className="bg-blue-600 text-white py-2 px-4 rounded-2xl rounded-tr-sm w-max text-xs sm:text-sm font-medium">I'll update the brand palette now.</div>
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-black absolute right-2 sm:right-5 top-[52.5%]" />
+              <div className="w-7 h-7 sm:w-7 sm:h-7 rounded-full bg-black absolute right-2 sm:right-5 top-[54%] md:top-[52.5%]" />
             </div>
 
             <div className="flex items-start gap-2 mb-4">
-              <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-blue-500 shrink-0" />
+              <div className="w-7 h-7 sm:w-7 sm:h-7 rounded-full bg-blue-500 shrink-0" />
               <div className="flex flex-col gap-2">
                 <div className="bg-white text-black py-2 px-4 rounded-2xl rounded-tl-sm w-max text-xs sm:text-sm font-medium">Perfect! Looks much better.</div>
               </div>

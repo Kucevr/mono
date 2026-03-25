@@ -158,29 +158,16 @@ export function Work() {
       <section className="relative w-full bg-white pt-32 pb-40 px-4 md:px-8 lg:px-12 z-20">
         <BouncyTop color="white" />
         
-        <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-32">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-y-32 gap-x-8 md:gap-x-16">
           
-          <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
-            {/* Work 1: Large left */}
-            <div className="w-full md:w-[60%]">
-               <WorkCard work={works[0]} aspect="4/3" />
+          {works.map((work, i) => (
+            <div 
+              key={work.id} 
+              className={`w-full ${i % 2 === 0 ? 'md:col-start-1 md:col-span-2' : 'md:col-start-2 md:col-span-2'}`}
+            >
+              <WorkCard work={work} aspect="16/9" />
             </div>
-            {/* Work 2: Small right, pushed down */}
-            <div className="w-full md:w-[35%] md:mt-32">
-               <WorkCard work={works[1]} aspect="3/4" />
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
-            {/* Work 3: Small left */}
-            <div className="w-full md:w-[35%]">
-               <WorkCard work={works[2]} aspect="4/5" />
-            </div>
-            {/* Work 4: Large right, pulled up a bit */}
-            <div className="w-full md:w-[60%] md:-mt-32">
-               <WorkCard work={works[3]} aspect="16/9" />
-            </div>
-          </div>
+          ))}
 
         </div>
 

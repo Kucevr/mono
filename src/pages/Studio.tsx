@@ -9,15 +9,39 @@ import { Navbar } from "../components/layout/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LogoIcons = [
-  () => <span className="font-bold text-2xl tracking-tighter flex items-center gap-1"><div className="w-4 h-4 border-2 border-black rotate-45" /> acme</span>,
-  () => <div className="w-10 h-10 border-4 border-black rounded-full" />,
-  () => <div className="w-12 h-12 flex gap-1"><span className="w-2 bg-black h-full block rounded-full" /><span className="w-2 bg-black h-full block rounded-full transform scale-y-75" /></div>,
-  () => <span className="font-extrabold text-2xl italic tracking-wider">Flok</span>,
-  () => <span className="font-black text-3xl tracking-tighter flex items-center gap-2"><div className="w-5 h-5 bg-black rounded-full" /> Ollio</span>,
-  () => <div className="flex gap-2"><div className="w-6 h-6 border-[3px] border-black rounded-tl-full rounded-br-full" /><div className="w-6 h-6 border-[3px] border-black rounded-tr-full rounded-bl-full" /></div>,
-  () => <div className="w-8 h-12 border-2 text-xl font-bold border-black rounded-full flex flex-col items-center justify-center">O</div>,
-  () => <span className="font-bold text-4xl">≈</span>,
+const partnerPairs = [
+  { 
+    front: () => <span className="font-bold text-2xl tracking-tighter">NIKE</span>, 
+    back: () => <span className="font-extrabold text-2xl italic tracking-wider">adidas</span> 
+  },
+  { 
+    front: () => <span className="font-medium text-2xl tracking-tight flex items-center gap-1"><div className="w-4 h-4 rounded-full bg-black"></div> Apple</span>, 
+    back: () => <span className="font-semibold text-2xl tracking-tighter">Microsoft</span> 
+  },
+  { 
+    front: () => <span className="font-medium text-2xl tracking-tight">Google</span>, 
+    back: () => <span className="font-bold text-2xl tracking-tighter">Meta</span> 
+  },
+  { 
+    front: () => <span className="font-bold text-2xl tracking-[0.2em] uppercase">Tesla</span>, 
+    back: () => <span className="font-semibold text-2xl tracking-widest uppercase">Rivian</span> 
+  },
+  { 
+    front: () => <span className="font-black text-2xl text-red-600 tracking-tighter uppercase">NETFLIX</span>, 
+    back: () => <span className="font-bold text-2xl flex items-center gap-1"><div className="w-5 h-5 rounded-full border-4 border-black"></div> Spotify</span> 
+  },
+  { 
+    front: () => <span className="font-serif italic text-3xl font-bold tracking-tighter">SONY</span>, 
+    back: () => <span className="font-bold text-2xl tracking-widest uppercase">Samsung</span> 
+  },
+  { 
+    front: () => <span className="font-bold text-2xl tracking-tighter">amazon</span>, 
+    back: () => <span className="font-bold text-2xl flex items-center gap-1"><div className="w-4 h-4 bg-green-600 rounded-sm"></div> Shopify</span> 
+  },
+  { 
+    front: () => <span className="font-medium text-3xl tracking-tighter">Uber</span>, 
+    back: () => <span className="font-bold text-2xl text-[#FF5A5F] tracking-tighter">airbnb</span> 
+  },
 ];
 
 export function Studio() {
@@ -36,17 +60,32 @@ export function Studio() {
     // Initialize rotation tracking
     cards.forEach(card => card.dataset.rotation = '0');
     
+    let availableIndices: number[] = [];
+
+    const getNextCardIndex = () => {
+      if (availableIndices.length === 0) {
+        availableIndices = cards.map((_, i) => i);
+        for (let i = availableIndices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [availableIndices[i], availableIndices[j]] = [availableIndices[j], availableIndices[i]];
+        }
+      }
+      return availableIndices.pop();
+    };
+
     const interval = setInterval(() => {
-      const randomCard = cards[Math.floor(Math.random() * cards.length)];
+      const idx = getNextCardIndex();
+      if (idx === undefined) return;
+      const card = cards[idx];
       
       // Prevent overlapping animations on the same card
-      if (gsap.isTweening(randomCard)) return;
+      if (gsap.isTweening(card)) return;
 
-      const currentRotation = parseInt(randomCard.dataset.rotation || '0', 10);
+      const currentRotation = parseInt(card.dataset.rotation || '0', 10);
       const newRotation = currentRotation + 180;
-      randomCard.dataset.rotation = newRotation.toString();
+      card.dataset.rotation = newRotation.toString();
 
-      gsap.to(randomCard, {
+      gsap.to(card, {
         rotateX: newRotation,
         duration: 1,
         ease: "power2.inOut",
@@ -306,17 +345,17 @@ export function Studio() {
            </div>
 
            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 perspective-[1000px]">
-             {LogoIcons.map((Logo, idx) => (
+             {partnerPairs.map(({ front: FrontLogo, back: BackLogo }, idx) => (
                <div 
                  key={idx} 
                  className="partner-card-studio relative rounded-xl aspect-2/1 flex items-center justify-center transform-style-3d shadow-sm"
                  style={{ transformStyle: 'preserve-3d' }}
                >
                  <div className="absolute inset-0 flex items-center justify-center bg-white rounded-xl backface-hidden" style={{ backfaceVisibility: 'hidden' }}>
-                    <Logo />
+                   <FrontLogo />
                  </div>
                  <div className="absolute inset-0 flex items-center justify-center bg-white rounded-xl backface-hidden rotate-x-180" style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}>
-                    <Logo />
+                   <BackLogo />
                  </div>
                </div>
              ))}

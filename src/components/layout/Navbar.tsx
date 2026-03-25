@@ -96,7 +96,7 @@ export function Navbar({ workCount = 4 }: { workCount?: number }) {
 
         {/* Центральные ссылки на десктопе */}
         <nav className={cn(
-          "hidden lg:flex flex-1 justify-center gap-16 text-[16px] font-bold tracking-tight absolute left-1/2 -translate-x-1/2 top-7 lg:top-8.5 transition-opacity duration-300 pointer-events-auto",
+          "hidden lg:flex flex-1 justify-center lg:gap-16 text-[16px] font-bold tracking-tight absolute left-1/2 -translate-x-1/2 top-7 lg:top-8.5 transition-opacity duration-300 pointer-events-auto",
           menuOpen ? "opacity-0" : "opacity-100"
         )}>
           <NavLink href="/">Home</NavLink>

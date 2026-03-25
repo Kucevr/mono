@@ -33,7 +33,7 @@ export function BouncyBottom({ color = "#ffffff", className = "" }: { color?: st
   return (
     <div 
       ref={containerRef} 
-      className={`absolute bottom-0 left-0 w-full h-[180px] md:h-[240px] translate-y-[100%] overflow-visible z-20 pointer-events-none ${className}`}
+      className={`absolute bottom-0 left-0 w-full h-[120px] md:h-[240px] translate-y-[100%] overflow-visible z-20 pointer-events-none ${className}`}
     >
       <svg
         preserveAspectRatio="none"
